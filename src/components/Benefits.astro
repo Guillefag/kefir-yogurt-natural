@@ -1,0 +1,45 @@
+---
+import { benefits } from '../data/site';
+---
+
+<section id="beneficios" class="section benefits">
+  <div class="container">
+    <span class="eyebrow">Por qué kefir</span>
+    <h2>Un alimento vivo que te hace bien</h2>
+    <p class="lead">
+      El kefir es una de las leches fermentadas más antiguas del mundo. Lo hacemos como se hizo siempre:
+      despacio y con ingredientes reales.
+    </p>
+    <div class="grid grid-4 list">
+      {
+        benefits.map((b, i) => (
+          <article class="card">
+            <span class="num">0{i + 1}</span>
+            <h3>{b.title}</h3>
+            <p>{b.text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .benefits {
+    background: var(--cream-2);
+  }
+  .list {
+    margin-top: 40px;
+  }
+  .num {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    color: var(--sage);
+    margin-bottom: 8px;
+  }
+  .card p {
+    color: var(--muted);
+    margin: 0;
+  }
+</style>

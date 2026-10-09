@@ -1,0 +1,59 @@
+---
+import { faqs } from '../data/site';
+---
+
+<section id="faq" class="section">
+  <div class="container narrow">
+    <span class="eyebrow">Preguntas frecuentes</span>
+    <h2>Todo sobre nuestro kefir</h2>
+    <div class="faqs">
+      {
+        faqs.map((f) => (
+          <details class="card">
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .narrow {
+    width: min(760px, 100% - 32px);
+  }
+  .faqs {
+    display: grid;
+    gap: 12px;
+    margin-top: 32px;
+  }
+  details {
+    padding: 20px 24px;
+  }
+  summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--green-2);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary::after {
+    content: '+';
+    font-size: 1.4rem;
+    line-height: 1;
+    color: var(--green);
+  }
+  details[open] summary::after {
+    content: '–';
+  }
+  details p {
+    margin: 12px 0 0;
+    color: var(--muted);
+  }
+</style>

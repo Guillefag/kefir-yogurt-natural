@@ -1,0 +1,78 @@
+---
+import { site, steps, whatsappLink } from '../data/site';
+---
+
+<section class="section how">
+  <div class="container">
+    <span class="eyebrow">Cómo pedir</span>
+    <h2>Simple, en 3 pasos</h2>
+    <ol class="grid grid-3 steps">
+      {
+        steps.map((s, i) => (
+          <li>
+            <span class="step-num">{i + 1}</span>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+    <div class="cta">
+      <p>{site.deliveryDays}. {site.zone}.</p>
+      <a class="btn btn-primary" href={whatsappLink()} target="_blank" rel="noopener">
+        Hacer mi pedido
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .how {
+    background: var(--green);
+    color: var(--milk);
+  }
+  .how h2,
+  .how h3 {
+    color: var(--milk);
+  }
+  .how .eyebrow {
+    color: var(--sage);
+  }
+  .steps {
+    list-style: none;
+    padding: 0;
+    margin: 40px 0;
+  }
+  .step-num {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--milk);
+    color: var(--green);
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 16px;
+  }
+  .steps p {
+    opacity: 0.85;
+  }
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 32px;
+    border-top: 1px solid rgb(255 253 248 / 0.2);
+  }
+  .cta p {
+    margin: 0;
+  }
+  .cta .btn-primary {
+    background: var(--milk);
+    color: var(--green-2);
+  }
+</style>

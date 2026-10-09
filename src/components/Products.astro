@@ -1,0 +1,82 @@
+---
+import { products, whatsappLink } from '../data/site';
+---
+
+<section id="productos" class="section">
+  <div class="container">
+    <span class="eyebrow">Productos</span>
+    <h2>Elegí tu frasco</h2>
+    <p class="lead">Fermentado fresco cada semana. Pedí por unidad o armá tu combo.</p>
+
+    <div class="grid grid-3 list">
+      {
+        products.map((p) => (
+          <article class:list={['card', 'product', { featured: p.featured }]}>
+            {p.featured && <span class="badge">Más pedido</span>}
+            <h3>{p.name}</h3>
+            <span class="size">{p.size}</span>
+            <p>{p.description}</p>
+            <div class="price">{p.price}</div>
+            <a
+              class:list={['btn', p.featured ? 'btn-primary' : 'btn-ghost']}
+              href={whatsappLink(`Hola! Quiero pedir ${p.name} ${p.size} 🥛`)}
+              target="_blank"
+              rel="noopener"
+            >
+              Pedir este
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .list {
+    margin-top: 40px;
+  }
+  .product {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid transparent;
+  }
+  .product.featured {
+    border-color: var(--green);
+  }
+  .product h3 {
+    margin-bottom: 2px;
+  }
+  .size {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--green);
+    margin-bottom: 12px;
+  }
+  .product p {
+    color: var(--muted);
+    flex: 1;
+  }
+  .price {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--green-2);
+    margin: 8px 0 20px;
+  }
+  .product .btn {
+    justify-content: center;
+  }
+  .badge {
+    position: absolute;
+    top: -14px;
+    right: 20px;
+    background: var(--green);
+    color: var(--milk);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 999px;
+  }
+</style>
